@@ -2,7 +2,8 @@ import p5 from 'p5'
 
 // these are the variables you can use as inputs to your algorithms
 console.log(fxhash)   // the 64 chars hex number fed to your algorithm
-console.log(fxrand()) // deterministic PRNG function, use it instead of Math.random()
+console.log('fxrand()',fxrand()) // deterministic PRNG function, use it instead of Math.random()
+console.log('fxrand()',fxrand()) // deterministic PRNG function, use it instead of Math.random()
 
 // note about the fxrand() function 
 // when the "fxhash" is always the same, it will generate the same sequence of
@@ -47,13 +48,20 @@ let s = (sk) => {
     var base=160;
         sk.createCanvas(window.innerWidth,window.innerHeight);
         sk.translate(window.innerWidth/2,window.innerHeight/2);
+        // sk.stroke(100*fxrand(),100*fxrand(),100*fxrand());
+        let x=255- parseInt(200*fxrand()),y=255- parseInt(200*fxrand()),z=255- parseInt(200*fxrand());
+        sk.stroke(x,y,z);
 
-        sk.ellipse(150-base,150-base,80,100);
+        
+        sk.noFill();
+        sk.ellipse(150-base,150-base,(80+50*fxrand()),100);
+        sk.fill(x,y,z);
         sk.text('丁', 143-base, 155-base);
+        sk.noFill();
         sk.ellipse(140-base,140-base,8,10);
         sk.ellipse(160-base,140-base,8,10);
        
-       
+        sk.fill(x,y,z);
         sk.text('三', 145-base, 120-base);
        
         sk.text('四', 145-base, 170-base);
@@ -66,9 +74,9 @@ let s = (sk) => {
        
         sk.text('三', 145-base, 200-base);
        
-       
-        sk.rect(100-base, 200-base, 100, 100, 20);
-       
+        sk.noFill();
+        sk.rect(100-base, 200-base, 100, 100+50*fxrand(), 20);
+        sk.fill(x,y,z);
         sk.text('6', 95-base, 260-base);
         sk.text('6', 200-base, 260-base);
         sk.textSize(60);
