@@ -44,26 +44,38 @@ function draw() {
 
 let s = (sk) => {    
   sk.setup = () =>{
-    let gfx = sk.createGraphics(window.innerWidth,window.innerHeight);
-        let gfx2;
-
+    var base=160;
         sk.createCanvas(window.innerWidth,window.innerHeight);
-        sk.angleMode(sk.DEGREES);
-        sk.imageMode(sk.CENTER);
         sk.translate(window.innerWidth/2,window.innerHeight/2);
-        sk.background(40);
-        gfx.stroke(200);
-        gfx.strokeWeight(3);
-        gfx.line(0,0,window.innerWidth,0);
-        for(let i=0;i<1000;i++){
-          // gfx.point(Math.random()*window.innerWidth, Math.random()*window.innerHeight);
-            gfx.point(fxrand()*window.innerWidth, fxrand()*window.innerHeight);
-        }
 
-        gfx2 = {...gfx};
-        sk.image(gfx,0,0);
-        sk.rotate(1);
-        sk.image(gfx2,0,0);
+        sk.ellipse(150-base,150-base,80,100);
+        sk.text('丁', 143-base, 155-base);
+        sk.ellipse(140-base,140-base,8,10);
+        sk.ellipse(160-base,140-base,8,10);
+       
+       
+        sk.text('三', 145-base, 120-base);
+       
+        sk.text('四', 145-base, 170-base);
+       
+       
+        sk.text('三', 105-base, 150-base);
+        sk.text('三', 185-base, 150-base);
+       
+        sk.text('3', 145-base, 100-base);
+       
+        sk.text('三', 145-base, 200-base);
+       
+       
+        sk.rect(100-base, 200-base, 100, 100, 20);
+       
+        sk.text('6', 95-base, 260-base);
+        sk.text('6', 200-base, 260-base);
+        sk.textSize(60);
+        
+        let angle1 = sk.radians(90);
+        sk.rotate(angle1);
+        sk.text('二', 295-base, 189-base);
   }
 
   sk.draw = () =>{
