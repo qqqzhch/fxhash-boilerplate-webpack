@@ -49,14 +49,20 @@ let s = (sk) => {
         sk.createCanvas(window.innerWidth,window.innerHeight);
         sk.translate(window.innerWidth/2,window.innerHeight/2);
         // sk.stroke(100*fxrand(),100*fxrand(),100*fxrand());
+
+        // sk.textFont('Georgia');
+        // sk.textFont('Helvetica');
         let x=255- parseInt(200*fxrand()),y=255- parseInt(200*fxrand()),z=255- parseInt(200*fxrand());
         sk.stroke(x,y,z);
 
         
         sk.noFill();
-        sk.ellipse(150-base,150-base,(80+50*fxrand()),100);
+        let ellipseVar1 =  (80+50*fxrand());
+        sk.ellipse(150-base,150-base,ellipseVar1,100);
         sk.fill(x,y,z);
-        sk.text('丁', 143-base, 155-base);
+        sk.textSize(28);
+        sk.text('丁', 135-base, 149-base);
+        sk.textSize(12);
         sk.noFill();
         sk.ellipse(140-base,140-base,8,10);
         sk.ellipse(160-base,140-base,8,10);
@@ -67,18 +73,26 @@ let s = (sk) => {
         sk.text('四', 145-base, 170-base);
        
        
-        sk.text('三', 105-base, 150-base);
-        sk.text('三', 185-base, 150-base);
+        sk.text('三', 145-base-ellipseVar1/2, 150-base);
+        sk.text('三', 145-base+ellipseVar1/2, 150-base);
        
         sk.text('3', 145-base, 100-base);
        
         sk.text('三', 145-base, 200-base);
        
         sk.noFill();
-        sk.rect(100-base, 200-base, 100, 100+50*fxrand(), 20);
+        sk.rect(100-base, 200-base, 100, 100+50*fxrand(), 20+parseInt(50*fxrand()));
         sk.fill(x,y,z);
-        sk.text('6', 95-base, 260-base);
-        sk.text('6', 200-base, 260-base);
+        sk.textSize(38);
+        sk.text('6', 80-base, 260-base);
+        sk.push();
+        sk.textSize(35);
+        // let angle2 = sk.radians(180);
+        // sk.rotate(angle2);
+        sk.scale(-1,1);
+        sk.text('6', 100-base, 260-base);
+        sk.pop();
+
         sk.textSize(60);
         
         let angle1 = sk.radians(90);
