@@ -43,23 +43,54 @@ function draw() {
   ellipse(mouseX, mouseY, 80, 80);
 }
 
+const palettes = [['#fefaf4', '#6399c8', '#8dac60', '#fcd424', '#638e74', '#d41b4b', '#f66d3a'],    
+                  ['#1b1c1f', '#084ba4', '#739761', '#e9b130', '#da2845', '#123f2f', '#e3dbdb'],
+                  ['#eae9e4', '#5b9fcc', '#deab12', '#e62747', '#014e2e'],
+                  ['#f1eee7', '#b8331a', '#32221e', '#f2a90e', '#8b884b', '#22608c', '#174f42', '#76aa68'],
+                  ['#eae9e4', '#003588', '#056470', '#02203c'],
+                  ['#473d3e', '#f5f2eb', '#598847', '#6397cc', '#f22e83', '#6d2924'],
+                  ['#faf9ee', '#e82822', '#fae808', '#598847', '#6397cc', '#f22e83', '#6d2924'],
+                  ['#faf9ee', '#e82822', '#fae808', '#598847', '#6397cc', '#f22e83', '#6d2924'],
+                  ['#fafbf6', '#4d67b2', '#d83e27', '#6b3d57', '#fff209', '#999db4', '#52745a', '#dd4a70'],
+                  ['#e7193d', '#e5b103', '#e4e1dc', '#e4e1dc', '#3b7340'],
+                  ['#f7f3ed', '#013a9d', '#ce0139', '#402533', '#a3a9b9', '#0f6c50', '#7dad4b', '#efd855', '#f76722'],
+                  ['#f7f3ed', '#013a9d', '#ce0139', '#402533', '#a3a9b9', '#0f6c50', '#7dad4b', '#efd855', '#f76722'],
+                  ['#f5f2ea', '#04488a', '#1f7bfa', '#f20f1e', '#6e6968'],
+                  ['#f2efe8', '#3b2321', '#676f94', '#676f94'],
+                  ['#f4f6f8', '#7da825', '#0473c4', '#ee8605', '#aa090f', '#e2e0d2', '#01993b', '#e2e0d2', '#dc318b'],
+                  ['#34303a', '#7da825', '#0473c4', '#ee8605', '#aa090f', '#e2e0d2', '#01993b', '#e2e0d2', '#dc318b'],
+                  ];
+
+var fonts=['/Alibaba-PuHuiTi-Heavy.TTF','hei.TTF','kuaile.ttf','/pinsong.otf']
 let s = (sk) => {    
+  let fontRegular, fontItalic, fontBold;
+  sk.preload=()=>{
+    let i = (parseInt(100*fxrand()))%2;
+    console.log('i',i)
+  
+    fontRegular = sk.loadFont(fonts[i]);
+  }
   sk.setup = () =>{
     var base=160;
         sk.createCanvas(window.innerWidth,window.innerHeight);
         sk.translate(window.innerWidth/2,window.innerHeight/2);
+        let x_= parseInt(10*fxrand());
+        console.log('x_',x_)
+        // let y= parseInt(10*fxrand());
+        sk.background(palettes[x_][2]);
+        sk.textFont(fontRegular);
         // sk.stroke(100*fxrand(),100*fxrand(),100*fxrand());
 
         // sk.textFont('Georgia');
         // sk.textFont('Helvetica');
-        let x=255- parseInt(200*fxrand()),y=255- parseInt(200*fxrand()),z=255- parseInt(200*fxrand());
-        sk.stroke(x,y,z);
+        let x=palettes[x_][1];
+        sk.stroke(x);
 
         
         sk.noFill();
         let ellipseVar1 =  (80+50*fxrand());
         sk.ellipse(150-base,150-base,ellipseVar1,100);
-        sk.fill(x,y,z);
+        sk.fill(x);
         sk.textSize(28);
         sk.text('丁', 135-base, 149-base);
         sk.textSize(12);
@@ -67,7 +98,7 @@ let s = (sk) => {
         sk.ellipse(140-base,140-base,8,10);
         sk.ellipse(160-base,140-base,8,10);
        
-        sk.fill(x,y,z);
+        sk.fill(x);
         sk.text('三', 145-base, 120-base);
        
         sk.text('四', 145-base, 170-base);
@@ -75,14 +106,18 @@ let s = (sk) => {
        
         sk.text('三', 145-base-ellipseVar1/2, 150-base);
         sk.text('三', 145-base+ellipseVar1/2, 150-base);
-       
-        sk.text('3', 145-base, 100-base);
-       
+
+        sk.push();
+        let angle3 = sk.radians(90);
+        sk.rotate(angle3);
+        sk.text('三', 93-base, 2);
+        sk.pop();
+
         sk.text('三', 145-base, 200-base);
        
         sk.noFill();
         sk.rect(100-base, 200-base, 100, 100+50*fxrand(), 20+parseInt(50*fxrand()));
-        sk.fill(x,y,z);
+        sk.fill(x);
         sk.textSize(38);
         sk.text('6', 80-base, 260-base);
         sk.push();
